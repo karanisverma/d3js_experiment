@@ -1,0 +1,44 @@
+html,body{
+	background: #f64d3d;
+	/*overflow: hidden;*/
+}
+body{
+	zoom:75%;
+}
+.container{
+	width: 100%;
+	color: black;
+
+}
+.marvel-device .screen{
+	background:white;
+	overflow-y: auto;
+	/*overflow-x: hidden;*/
+}
+.mobile{
+	    margin: 0 auto;
+    width: 25em;
+    margin-top: 3em;
+}
+::-webkit-scrollbar {
+   width: 6px;
+}
+
+::-webkit-scrollbar-track {
+   /*-webkit-box-shadow: inset 0 0 6px white;*/
+}
+
+::-webkit-scrollbar-thumb {
+   /*-webkit-box-shadow: inset 0 0 6px black;*/
+   background: #d0d0d0 ;
+}
+
+md-pagination-wrapper{
+	margin: 0 auto;
+    position: relative;
+}
+
+md-input-container.md-block {
+    display: block;
+    text-align: left;
+}

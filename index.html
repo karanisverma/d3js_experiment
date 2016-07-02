@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="music-app">
+
+<head>
+    <title>Music APP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS  -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Angular material css -->
+    <link rel="stylesheet" href="css/angular-material.min.css">
+    <!-- Device mokeup CSS -->
+    <!-- Custom css -->
+    <link href="css/custom.css" rel="stylesheet">
+</head>
+
+<body>
+    <div ng-controller="graphController as gc">
+    <span>{{gc.result}}</span>
+    <!-- <div ng-repeat = "company in gc.data">
+    <span>{{company}}</span>  -->
+    <br>
+    <span>--------------------------------------------------</span>   
+    <!-- </div> -->
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Search</label>
+        <input ng-model="gc.searchKeyword">
+    </md-input-container>
+    <md-button class="md-raised" ng-click="gc.search()">Search</md-button>
+    </div>
+</body>
+<!-- Angular.js -->
+<script src="js/angular.min.js"></script>
+<!-- Angular ng-resource -->
+<script src="js/angular-resource.min.js"></script>
+<!-- Angular animation -->
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-aria.min.js"></script>
+<script src="js/angular-messages.min.js"></script>
+<!-- Angular Material Library -->
+<script src="js/angular-material.min.js"></script>
+<!-- Jquery Lib -->
+<script src="js/jquery2.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="js/jquery.min.js"></script>
+<!-- Bootstrap.js -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- This one is for router -->
+<script src="js/angular-route.min.js"></script>
+<!-- App.js for this app -->
+<script type="text/javascript" src="app.js"></script>
+
+</html>
