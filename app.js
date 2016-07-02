@@ -72,6 +72,39 @@
              console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
 
         }
+        // for the pie chart
+
+        this.getMark = function() {
+            console.log('mark');
+            console.log(gc.data);
+            var indMark = {};
+            angular.forEach(gc.data, function(val) {
+                if (val.Industry in indMark) {
+                    console.log("under if");
+                    // yes => add total & increase counter
+                    industryVal = indMark[val.Industry];
+                    if ('Market Cap' in val) {
+                        industryVal["Total Market Cap"] = industryVal["Total Market Cap"] + val["Market Cap"];
+                    }
+                    // sectorVal["count"] = sectorVal["count"] + 1;
+                    console.log("industry is => " + val.Industry);
+                    console.log("market cap=>" + industryVal["Total Market Cap"]);
+
+                } else {
+                     console.log("under else");
+                    var industryVal = {};
+                    // sectorVal["count"] = 1;
+                    industryVal["Total Market Cap"] = val["Market Cap"];
+                    indMark[val.Industry] = industryVal;
+                    console.log("industryy is => " + val.Industry);
+                    console.log("market capp =>" + val["Market Cap"]);
+                    // secAvg[val.Sector] = sectorVal;
+                    // no => add new key value pair make counter 1
+                }
+
+            });
+            console.log("This is what have you doooone ===>" + JSON.stringify(indMark));
+        }
     }]); //closing controller
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
