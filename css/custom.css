@@ -59,9 +59,7 @@ body {
 }
 
 body {
-  /*background-color: #e9efec;*/
-  /*background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cGF0aCBkPSJNMjggNjZMMCA1MEwwIDE2TDI4IDBMNTYgMTZMNTYgNTBMMjggNjZMMjggMTAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSI+PC9wYXRoPgo8L3N2Zz4=);*/
-  font-family: "Oswald", "Helvetica Newe", Helvetica, sans-serif;
+ font-family: "Oswald", "Helvetica Newe", Helvetica, sans-serif;
 }
 
 .pchart {
@@ -113,11 +111,6 @@ body {
 .chart path {
   cursor: pointer;
 }
-
-
-
-
-
 md-tabs-wrapper{
   padding-left: 38%;
  
@@ -154,17 +147,10 @@ button.md-raised.md-button.md-ink-ripple{
     min-height: 30px;
 }
 
-/*i.fa.fa-search.ng-scope:hover{
-  color: pink;
-}*/
-/*button.md-raised.md-button.md-ink-ripple{
-  margin-right: 18em;
-}*/
-
 li.bar.ng-scope{
-      /*height: 17em;*/
+    
     width: 3em;
-    /*left: 0px;*/
+    
 }
 
 md-content.md-padding.ng-scope{
