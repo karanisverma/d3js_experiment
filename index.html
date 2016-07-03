@@ -38,9 +38,10 @@
             <li ng-repeat="bar in gc.avgProfit" class="bar" style="position: absolute;
     top: 23.3em;height:{{-(bar.avg / gc.max * gc.height)}}px; width:{{gc.width / gc.avgProfit.length - 5}}px; left:{{$index / gc.avgProfit.length * gc.width}}px;"><span>{{bar.sec}}:{{bar.avg}}</span></li>
             </ul>
+            <my-directive drawPie="drawPie()" marketCap = {{gc.pieChartval}}></my-directive>
             <div id="pieChart" class="pchart"></div>
     </div>
-      <button ng-click = 'drawPie({{gc.pieChartval}})'>click</button>
+      <!-- <button ng-click = 'drawPie({{gc.pieChartval}})'>click</button> -->
     <!--     <div ng-controller="BarCtrl as bc">
     <canvas id="bar" class="chart chart-bar"
   chart-data="bc.data" chart-labels="bc.labels" chart-series="bc.series">
@@ -52,10 +53,10 @@
 <script src="js/jquery.min.js"></script>
 
 <script type="text/javascript">
-    drawPie=function(pieValues){
-        console.log("PieValue => ", pieValues);
-  $("#pieChart").drawPieChart(pieValues);
-}
+//     drawPie=function(pieValues){
+//         console.log("PieValue => ", pieValues);
+//   $("#pieChart").drawPieChart(pieValues);
+// }
 
 /*!
  * jquery.drawPieChart.js

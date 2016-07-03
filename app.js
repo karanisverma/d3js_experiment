@@ -15,21 +15,31 @@
     return {
         restrict: "E",
         scope: {
-            drawPie: "&"                              
+            drawPie: "&",
+            marketCap:'='
         },
-        template: "<div ng-click='drawPie({{gc.pieChartval}})'></div>", // call function this way...
-        link: function(scope, element, attrs) {
-            // unwrap the function
-            scope.drawPie = scope.drawPie(); 
+        template: '<button x-ng-click="save()">Get what you want</button>',
+        // <div ng-click='drawPie({{gc.pieChartval}})'></div>
+        // controller: function(scope, element, attrs) {
+        //     // unwrap the function
+        //     scope.drawPie = scope.drawPie(); 
 
-            scope.data = "data from somewhere";
+        //     scope.data = "data from somewhere";
 
-            element.bind("click",function() {
-                scope.$apply(function() {
-                    drawPie(data);                        // ...or this way
-                });
-            });
-        }
+        //     element.bind("click",function() {
+        //         scope.$apply(function() {
+        //             drawPie(data);                        // ...or this way
+        //         });
+        //     });
+        // }
+
+         controller: function($scope, $element, $attrs, $location) {        
+        $scope.save= function() {
+            console.log("ERROR ERROR!!");
+          console.log('from directive', $scope.marketCap); 
+          $scope.drawPie($scope.marketCap);
+        };
+      }
     }
 });
     app.service('graphService', ['$resource', function($resource) {
