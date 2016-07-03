@@ -9,14 +9,11 @@
 // });
 
 (function() {
-    var app = angular.module('graph-app', ['ngMaterial', 'ngResource','d3']);
-
-    app.controller('graphController', ['$resource', function($resource) {
-        var gc = this;
+    var app = angular.module('graph-app', ['ngMaterial', 'ngResource', 'd3']);
+    app.service('graphService', ['$resource', function($resource) {
         this.getResource = function(url) {
-                return $resource(url);
-            }
-            // at the bottom of your controller
+            return $resource(url);
+        }
         this.init = function() {
             // check if there is query in url
             // and fire search in case its value is not empty
@@ -25,29 +22,22 @@
             // // <<<<< This is how do you search track given its title name >>>>>
             var entry = gResource.query(function() {
                 console.log("JSON Responce is =>" + entry);
-                gc.data = entry;
-            });
-        };
-        // and fire it after definition
-        this.init();
-        this.dummy = function() {
-            console.log("dummmy is working");
-        }
-        this.search = function() {
-            console.log("under search");
-            console.log("Keyword is => " + gc.searchKeyword);
-            angular.forEach(gc.data, function(val) {
-                if (gc.searchKeyword == val.Ticker) {
-                    gc.result = val;
-                }
 
             });
+            return entry;
+        };
+        this.val = this.init();
+
+        this.returnJSON = function() {
+            return this.val;
         }
+
         this.getAvg = function() {
             console.log('het');
-            console.log(gc.data);
+            data = this.returnJSON();
+            console.log(data);
             var secAvg = {};
-            angular.forEach(gc.data, function(val) {
+            angular.forEach(data, function(val) {
                 if (val.Sector in secAvg) {
                     // yes => add total & increase counter
                     sectorVal = secAvg[val.Sector];
@@ -70,25 +60,27 @@
 
             });
             console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
-            
+
             for (var sec in secAvg) {
-                console.log("Sector = > "+sec);
-                console.log("For Loop => "+JSON.stringify(secAvg[sec]));
-                secAvg[sec]["avg"] = secAvg[sec]["Total Profit Margin"]/secAvg[sec]["count"];
+                console.log("Sector = > " + sec);
+                console.log("For Loop => " + JSON.stringify(secAvg[sec]));
+                secAvg[sec]["avg"] = secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
                 // secAvg[sec]
                 // var value = myDictionary[key];
                 // Use `key` and `value`
             }
-             console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
+            console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
 
         }
+
         // for the pie chart
 
         this.getMark = function() {
             console.log('mark');
-            console.log(gc.data);
+            data = this.returnJSON();
+            console.log(data);
             var indMark = {};
-            angular.forEach(gc.data, function(val) {
+            angular.forEach(data, function(val) {
                 if (val.Industry in indMark) {
                     console.log("under if");
                     // yes => add total & increase counter
@@ -101,7 +93,7 @@
                     console.log("market cap=>" + industryVal["Total Market Cap"]);
 
                 } else {
-                     console.log("under else");
+                    console.log("under else");
                     var industryVal = {};
                     // sectorVal["count"] = 1;
                     industryVal["Total Market Cap"] = val["Market Cap"];
@@ -115,6 +107,40 @@
             });
             console.log("This is what have you doooone ===>" + JSON.stringify(indMark));
         }
+
+    }]);
+    app.controller('graphController', ['$resource', 'graphService', function($resource, graphService) {
+        var gc = this;
+        // this.getResource = function(url) {
+        //         return $resource(url);
+        //     }
+        // at the bottom of your controller
+
+        // and fire it after definition
+        gc.data = graphService.returnJSON();
+        this.barGraph = function() {
+            graphService.getAvg();
+        }
+
+        this.pieChart = function() {
+            graphService.getMark();
+        }
+
+        this.dummy = function() {
+            console.log("dummmy is working");
+        }
+        this.search = function() {
+            console.log("under search");
+            console.log("Keyword is => " + gc.searchKeyword);
+            angular.forEach(gc.data, function(val) {
+                if (gc.searchKeyword == val.Ticker) {
+                    gc.result = val;
+                }
+
+            });
+        }
+
+
     }]); //closing controller
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();

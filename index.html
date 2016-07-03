@@ -29,15 +29,15 @@
         <input ng-model="gc.searchKeyword">
     </md-input-container>
     <md-button class="md-raised" ng-click="gc.search()">Search</md-button>
-    <md-button class="md-raised" ng-click="gc.getAvg()">getaverage</md-button>
-    <md-button class="md-raised" ng-click="gc.getMark()">piechart</md-button>
+    <md-button class="md-raised" ng-click="gc.barGraph()">getaverage</md-button>
+    <md-button class="md-raised" ng-click="gc.pieChart()">piechart</md-button>
     
     </div>
-    <div ng-controller="BarCtrl as bc">
+<!--     <div ng-controller="BarCtrl as bc">
     <canvas id="bar" class="chart chart-bar"
   chart-data="bc.data" chart-labels="bc.labels" chart-series="bc.series">
 </canvas>
-    </div>
+    </div> -->
 </body>
 <!-- Angular.js -->
 
