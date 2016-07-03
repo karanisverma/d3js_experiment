@@ -122,7 +122,15 @@
     gc.height = 350;
     gc.yAxis = 'Avg Profit Margin';
     gc.xAxis = 'Secor';
-    
+                gc.pieChartval = [
+    { title: "Tokyo",         value : 280,  color: "#02B3E7" },
+    { title: "San Francisco", value:  60,   color: "#CFD3D6" },
+    { title: "London",        value : 50,   color: "#736D79" },
+    { title: "New York",      value:  30,   color: "#776068" },
+    { title: "Sydney",        value : 20,   color: "#EB0D42" },
+    { title: "Berlin",        value : 20,   color: "#FFEC62" },
+    { title: "Osaka",         value : 7,    color: "#04374E" } 
+  ];
         // this.getResource = function(url) {
         //         return $resource(url);
         //     }
@@ -150,6 +158,7 @@
 
         this.pieChart = function() {
             graphService.getMark();
+            jQuery("#pieChart").drawPieChart(gc.pieChartval);
         }
 
         this.dummy = function() {
