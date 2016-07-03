@@ -10,11 +10,11 @@
     <link href="css/custom.css" rel="stylesheet">
     <link rel="stylesheet" href="css/new_css.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.css.map">
+   <!--  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.css.map"> -->
     <script src="js/angular.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.js"></script>
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.js"></script> -->
     <script src="js/angularjs-nvd3-directives.js"></script>
 </head>
 
@@ -33,7 +33,7 @@
                                     <md-button class="md-raised" ng-click="gc.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                                     <input ng-model="gc.searchKeyword">
                                 </md-input-container>
-                                <div class="details pull-left" ng-show={{gc.details}}>
+                                <div class="details pull-left" ng-show= "gc.details">
                                     <p><span class="elmnt tbold">ID:</span><span class="element_value">{{gc.result._id}}</span></p>
                                     <p><span class="elmnt tbold">Ticker:</span><span class="element_value tregular">{{gc.result.Ticker}}</span></p>
                                     <p><span class="elmnt tbold">Total Debt/Equity:</span><span class="element_value tregular">{{gc.result["Total Debt/Equity"]}}</span></p>
@@ -82,7 +82,6 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <!-- <script src="js/angular-route.min.js"></script> -->
 <script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
 <script type="text/javascript">
 $(function() {
     var pdata = $(".pchart").attr('data-piedata');
