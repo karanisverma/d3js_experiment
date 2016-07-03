@@ -10,6 +10,7 @@ body {
   position: relative;
   list-style: none;
   padding: 0;
+  left: -2em;
 }
 .y {
   position: absolute;
@@ -27,12 +28,12 @@ body {
   padding: 5px;
 }
 .bar {
-  background: blue;
+  background: #7a7af4;
   position: absolute;
   bottom: 0;
 }
 .bar:nth-of-type(even) {
-  background: red;
+  background: #328e36;
 }
 .bar span {
   position: absolute;
@@ -119,7 +120,7 @@ body {
 
 md-tabs-wrapper{
   padding-left: 38%;
-  background-color: #2dbeea;
+ 
 }
 
 label.search{
@@ -128,20 +129,22 @@ label.search{
 }
 
 input#input_3{
-      width: 70%;
-    /*margin-left: 10%;*/
+     text-indent: 10px;
 }
 
 button.md-raised.md-button.md-ink-ripple{
-      margin-right: 12em;
-    margin-top: -1em;
+     float: right;
+    margin-right: -4em;
+    position: relative;
+    top: 6px;
+    left: -4em;
 }
 
-md-tabs-content-wrapper{
+/*md-tabs-content-wrapper{
       width: 80%;
     margin-left: 17em;
 }
-
+*/
 .md-button{
   margin-right: 18em;
     margin-top: -1em;
@@ -154,6 +157,56 @@ md-tabs-content-wrapper{
 /*i.fa.fa-search.ng-scope:hover{
   color: pink;
 }*/
-button.md-raised.md-button.md-ink-ripple{
+/*button.md-raised.md-button.md-ink-ripple{
   margin-right: 18em;
+}*/
+
+li.bar.ng-scope{
+      /*height: 17em;*/
+    width: 3em;
+    /*left: 0px;*/
+}
+
+md-content.md-padding.ng-scope{
+height: 46em;
+}
+
+md-tabs[md-border-bottom] md-tabs-wrapper{
+   background-color: #2dbeea;
+}
+
+span.elmnt{
+  font-size: 1.2em;
+  color: #f30339;
+}
+
+span.element_value{
+  color:#71595e;
+  margin-left: 10px;
+}
+
+.details{
+  text-align: left;
+}
+
+span.ng-scope {
+    font-size: 1em;
+    color: whitesmoke;
+}
+
+.y.ng-binding {
+    color: #e4183b;
+    font-weight: 600;
+    margin-left: -1em;
+}
+
+.x{
+   color: #e4183b;
+    font-weight: 600;
+}
+
+p.totl_chrt{
+  margin-top: 17em;
+  font-size: 1.3em;
+  color: #e4183b;
 }

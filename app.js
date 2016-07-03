@@ -23,6 +23,7 @@
             return entry;
         }
         this.val = this.init();
+        gc.details=false;
 
         this.returnJSON = function() {
             return this.val;
@@ -178,8 +179,9 @@ this.first = true
             console.log("under search");
             console.log("Keyword is => " + gc.searchKeyword);
             angular.forEach(gc.data, function(val) {
-                if (gc.searchKeyword == val.Ticker) {
+                if (gc.searchKeyword == val.Company) {
                     gc.result = val;
+                    gc.details=true;
                 }
 
             });
