@@ -159,15 +159,16 @@
             }
             console.log("GC Max =>" + gc.max)
         }
-
+this.first = true
         this.pieChart = function() {
+            if(this.first){
+                this.first = false;
             gc.pieChartval = graphService.getMark();
-
             gc.piedata = jQuery.parseJSON(JSON.stringify(gc.pieChartval));
             // console.log("piedata => "+ piedata);
             // console.log("TYPE>>>>",jQuery.type(gc.piedata));
             jQuery("#pieChart").drawPieChart(gc.piedata);
-
+}
         }
 
         this.dummy = function() {
