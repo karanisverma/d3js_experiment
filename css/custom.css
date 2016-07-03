@@ -1,5 +1,6 @@
 body {
   text-align: center;
+  overflow-x: hidden;
 }
 .chart {
   border-left: 1px solid black;
@@ -109,4 +110,49 @@ body {
 
 .chart path {
   cursor: pointer;
+}
+
+
+
+
+
+md-tabs-wrapper{
+  padding-left: 38%;
+  background-color: #2dbeea;
+}
+
+label.search{
+  text-align: left;
+  /*margin-left: 10%;*/
+}
+
+input#input_3{
+      width: 70%;
+    /*margin-left: 10%;*/
+}
+
+button.md-raised.md-button.md-ink-ripple{
+      margin-right: 12em;
+    margin-top: -1em;
+}
+
+md-tabs-content-wrapper{
+      width: 80%;
+    margin-left: 17em;
+}
+
+.md-button{
+  margin-right: 18em;
+    margin-top: -1em;
+    position: relative;
+    left: -13px;
+    min-width:45px;
+    min-height: 30px;
+}
+
+/*i.fa.fa-search.ng-scope:hover{
+  color: pink;
+}*/
+button.md-raised.md-button.md-ink-ripple{
+  margin-right: 18em;
 }

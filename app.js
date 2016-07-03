@@ -157,7 +157,7 @@
         this.pieChart = function() {
             gc.pieChartval = graphService.getMark();
             piedata = JSON.stringify(gc.pieChartval);
-            // jQuery("#pieChart").drawPieChart(piedata);
+            jQuery("#pieChart").drawPieChart(piedata);
         }
 
         this.dummy = function() {
