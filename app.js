@@ -1,47 +1,7 @@
-// app.controller("BarCtrl", function ($scope) {
-//   $scope.labels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-//   $scope.series = ['Series A', 'Series B'];
-
-//   $scope.data = [
-//     [65, 59, 80, 81, 56, 55, 40],
-//     [28, 48, 40, 19, 86, 27, 90]
-//   ];
-// });
-
 (function() {
-    var app = angular.module('graph-app', ['ngMaterial', 'ngResource', 'd3']);
-    app.directive("myDirective", function() {
+    var app = angular.module('graph-app', ['ngMaterial', 'ngResource']);
 
-    return {
-        restrict: "E",
-        scope: {
-            drawPie: "&",
-            marketCap:'='
-        },
-        template: '<button x-ng-click="save()">Get what you want</button>',
-        // <div ng-click='drawPie({{gc.pieChartval}})'></div>
-        // controller: function(scope, element, attrs) {
-        //     // unwrap the function
-        //     scope.drawPie = scope.drawPie(); 
 
-        //     scope.data = "data from somewhere";
-
-        //     element.bind("click",function() {
-        //         scope.$apply(function() {
-        //             drawPie(data);                        // ...or this way
-        //         });
-        //     });
-        // }
-
-         controller: function($scope, $element, $attrs, $location) {        
-        $scope.save= function() {
-            console.log("ERROR ERROR!!");
-          console.log('from directive', $scope.marketCap); 
-          $scope.drawPie($scope.marketCap);
-        };
-      }
-    }
-});
     app.service('graphService', ['$resource', function($resource) {
         this.getResource = function(url) {
             return $resource(url);
@@ -113,7 +73,14 @@
         }
 
         // for the pie chart
-
+        this.getRandomColor = function() {
+            var letters = '0123456789ABCDEF'.split('');
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
         this.getMark = function() {
             console.log('mark');
             data = this.returnJSON();
@@ -145,52 +112,52 @@
 
             });
             console.log("This is what have you doooone ===>" + JSON.stringify(indMark));
+            var r1 = {};
+            var result1 = []
+            for (var ind in indMark) {
+                r1 = {};
+                // console.log("Industry = > " + ind);
+                // console.log("Market Cap => " + JSON.stringify(indMark[ind]));
+                r1["title"] = ind;
+                r1["value"] = indMark[ind]["Total Market Cap"];
+                r1["color"] = this.getRandomColor();
+                // r[sec]= secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
+                result1.push(r1);
+
+                // secAvg[sec]
+                // var value = myDictionary[key];
+                // Use `key` and `value`
+            }
+            console.log("result ===>" + JSON.stringify(result1));
+            // console.log("result ===>" + result1);
+            return result1;
         }
 
     }]);
     app.controller('graphController', ['$resource', 'graphService', function($resource, graphService) {
         var gc = this;
-            gc.width = 600;
-    gc.height = 350;
-    gc.yAxis = 'Avg Profit Margin';
-    gc.xAxis = 'Secor';
-                gc.pieChartval = [
-    { title: "Tokyo",         value : 280,  color: "#02B3E7" },
-    { title: "San Francisco", value:  60,   color: "#CFD3D6" },
-    { title: "London",        value : 50,   color: "#736D79" },
-    { title: "New York",      value:  30,   color: "#776068" },
-    { title: "Sydney",        value : 20,   color: "#EB0D42" },
-    { title: "Berlin",        value : 20,   color: "#FFEC62" },
-    { title: "Osaka",         value : 7,    color: "#04374E" } 
-  ];
-        // this.getResource = function(url) {
-        //         return $resource(url);
-        //     }
-        // at the bottom of your controller
-
-        // and fire it after definition
+        gc.width = 600;
+        gc.height = 350;
+        gc.yAxis = 'Avg Profit Margin';
+        gc.xAxis = 'Secor';
         gc.data = graphService.returnJSON();
         this.barGraph = function() {
             gc.avgProfit = graphService.getAvg();
 
             gc.max = 0;
-            console.log("!!!! => "+gc.avgProfit);
-            for (var i =0 ; i< gc.avgProfit.length;i++){
-                if(gc.avgProfit[i].avg > gc.max){
+            console.log("!!!! => " + gc.avgProfit);
+            for (var i = 0; i < gc.avgProfit.length; i++) {
+                if (gc.avgProfit[i].avg > gc.max) {
                     gc.max = gc.avgProfit[i].avg;
                 }
             }
-    // for (var key in gc.avgProfit) {
-    //     // Find Maximum X Axis Value
-    //     if (gc.avgProfit[key] > gc.max)
-    //     gc.max = gc.avgProfit[key];
-    console.log("GC Max =>"+gc.max)
-    // }
+            console.log("GC Max =>" + gc.max)
         }
 
         this.pieChart = function() {
-            graphService.getMark();
-            jQuery("#pieChart").drawPieChart(gc.pieChartval);
+            gc.pieChartval = graphService.getMark();
+            piedata = JSON.stringify(gc.pieChartval);
+            // jQuery("#pieChart").drawPieChart(piedata);
         }
 
         this.dummy = function() {
@@ -209,6 +176,9 @@
 
 
     }]); //closing controller
+
+
+
     app.config(function($mdThemingProvider) {
         $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
         $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
