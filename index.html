@@ -33,7 +33,7 @@
                                     <md-button class="md-raised" ng-click="gc.search()"><i class="fa fa-search" aria-hidden="true"></i></md-button>
                                     <input ng-model="gc.searchKeyword">
                                 </md-input-container>
-                                <div class="details pull-left" ng-show={{gc.details}}>
+                                <div class="details pull-left">
                                     <p><span class="elmnt tbold">ID:</span><span class="element_value">{{gc.result._id}}</span></p>
                                     <p><span class="elmnt tbold">Ticker:</span><span class="element_value tregular">{{gc.result.Ticker}}</span></p>
                                     <p><span class="elmnt tbold">Total Debt/Equity:</span><span class="element_value tregular">{{gc.result["Total Debt/Equity"]}}</span></p>
@@ -80,9 +80,9 @@
 <!-- Angular Material Library -->
 <script src="js/angular-material.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- <script src="js/angular-route.min.js"></script> -->
+<script src="js/angular-route.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script> -->
 <script type="text/javascript">
 $(function() {
     var pdata = $(".pchart").attr('data-piedata');
