@@ -10,11 +10,20 @@
     <link rel="stylesheet" href="css/angular-material.min.css">
     <!-- Device mokeup CSS -->
     <!-- Custom css -->
+    <link rel="stylesheet" href="css/nv.d3.css" />
     <link href="css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.min.css.map">
+    <script src="js/angular.min.js"></script>
+<!-- <script src="js/d3.js"></script> -->
+<script type="text/javascript" src ="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.0/d3.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.3/nv.d3.js"></script>
+<script src="js/angularjs-nvd3-directives.js"></script>
 </head>
 
-<body ng-controller="graphController as gc">
-    <div>
+
+<body>
+    <div ng-controller="graphController as gc">
         <span>{{gc.result}}</span>
         <!-- <div ng-repeat = "company in gc.data">
     <span>{{company}}</span>  -->
@@ -38,25 +47,46 @@
             <li ng-repeat="bar in gc.avgProfit" class="bar" style="position: absolute;
     top: 23.3em;height:{{-(bar.avg / gc.max * gc.height)}}px; width:{{gc.width / gc.avgProfit.length - 5}}px; left:{{$index / gc.avgProfit.length * gc.width}}px;"><span>{{bar.sec}}:{{bar.avg}}</span></li>
             </ul>
-            <my-directive drawPie="drawPie()" marketCap = {{gc.pieChartval}}></my-directive>
+            <!-- <my-directive drawPie="drawPie()" marketCap ="{{gc.pieChartval}}"></my-directive> -->
             <div id="pieChart" class="pchart"></div>
     </div>
+
       <!-- <button ng-click = 'drawPie({{gc.pieChartval}})'>click</button> -->
-    <!--     <div ng-controller="BarCtrl as bc">
+    <!--     <div ng-controller="BarCtrl as bc"> 
     <canvas id="bar" class="chart chart-bar"
   chart-data="bc.data" chart-labels="bc.labels" chart-series="bc.series">
 </canvas>
     </div> -->
+    <div id="pieChart" class="pchart"></div>
 </body>
 <!-- Angular.js -->
 <script src="js/jquery2.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="js/jquery.min.js"></script>
 
+  <!-- <script src="js/angular.js"></script> -->
+  
+
+<!-- Angular ng-resource -->
+<script src="js/angular-resource.min.js"></script>
+<!-- <script src="js/angular-chart.min.js"></script> -->
+<!-- Angular animation -->
+<script src="js/angular-animate.min.js"></script>
+<script src="js/angular-aria.min.js"></script>
+<script src="js/angular-messages.min.js"></script>
+<!-- Angular Material Library -->
+<script src="js/angular-material.min.js"></script>
+<!-- Jquery Lib -->
+<!-- <script src="js/Chart.min.js"></script> -->
+<!-- Bootstrap.js -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<!-- This one is for router -->
+<script src="js/angular-route.min.js"></script>
+<!-- App.js for this app -->
+<script type="text/javascript" src="app.js"></script>
 <script type="text/javascript">
-//     drawPie=function(pieValues){
-//         console.log("PieValue => ", pieValues);
-//   $("#pieChart").drawPieChart(pieValues);
-// }
+    $(function() {
+  $("#pieChart").drawPieChart([{"title":"Medical Laboratories & Research","value":17356.8,"color":"#B67A1B"},{"title":"Aluminum","value":14358.279999999999,"color":"#C02617"},{"title":"Exchange Traded Fund","value":null,"color":"#A6129B"},{"title":"Asset Management","value":7593.410000000001,"color":"#DC32FB"},{"title":"Life Insurance","value":85.92,"color":"#D2A3B0"},{"title":"Rental & Leasing Services","value":2319.04,"color":"#83EC60"},{"title":"Semiconductor - Integrated Circuits","value":381.69,"color":"#461225"},{"title":"General Building Materials","value":1495.92,"color":"#08CE60"},{"title":"Auto Parts Stores","value":7251.42,"color":"#69003E"},{"title":"Electronic Equipment","value":470732.83,"color":"#B31B38"},{"title":"REIT - Office","value":1274.14,"color":"#FAAF62"},{"title":"Gold","value":18193.16,"color":"#415F22"},{"title":"Oil & Gas Drilling & Exploration","value":649.96,"color":"#47A862"},{"title":"Air Services, Other","value":950.69,"color":"#7AF6FD"},{"title":"Diagnostic Substances","value":792.8900000000001,"color":"#3562D8"},{"title":"Industrial Equipment & Components","value":57631.73,"color":"#B5D3A6"},{"title":"Drug Manufacturers - Major","value":76799.25,"color":"#B38F6F"},{"title":"Drugs Wholesale","value":15785.44,"color":"#1EA3B9"},{"title":"Regional - Mid-Atlantic Banks","value":462.48,"color":"#96A0F3"},{"title":"Education & Training Services","value":63.46,"color":"#FA8CAB"},{"title":"Business Services","value":15833.41,"color":"#A4F17B"},{"title":"Trucking","value":814.5,"color":"#F509E6"},{"title":"Auto Dealerships","value":1554.96,"color":"#514FF0"},{"title":"Biotechnology","value":3850.59,"color":"#12B3AA"},{"title":"Medical Appliances & Equipment","value":60547.6,"color":"#10BB4E"},{"title":"REIT - Diversified","value":425.91999999999996,"color":"#6C39DF"},{"title":"Internet Information Providers","value":95.92,"color":"#CB0B2A"},{"title":"Beverages - Brewers","value":116372.76,"color":"#74C9F5"},{"title":"Recreational Vehicles","value":733.84,"color":"#80B5A0"},{"title":"REIT - Residential","value":3500.73,"color":"#1E0104"},{"title":"Application Software","value":32224,"color":"#2651CB"},{"title":"Office Supplies","value":660.02,"color":"#9955BA"},{"title":"Property & Casualty Insurance","value":41137.619999999995,"color":"#FAD083"},{"title":"Chemicals - Major Diversified","value":540.15,"color":"#C70DAA"},{"title":"Regional - Southeast Banks","value":8.39,"color":"#EE7675"},{"title":"Aerospace/Defense Products & Services","value":60.24,"color":"#648718"},{"title":"Closed-End Fund - Debt","value":1697.95,"color":"#5005C0"},{"title":"Specialized Health Services","value":2224.78,"color":"#572B91"},{"title":"Industrial Metals & Minerals","value":1932.58,"color":"#C4119B"},{"title":"Technical & System Software","value":12135.61,"color":"#56845D"},{"title":"Semiconductor Equipment & Materials","value":254.14,"color":"#F3772B"},{"title":"Technical Services","value":2873.49,"color":"#F1F0EA"},{"title":"Oil & Gas Refining & Marketing","value":9101.15,"color":"#8042EB"},{"title":"Information Technology Services","value":52159.979999999996,"color":"#542384"},{"title":"Regional - Southwest  Banks","value":106.24,"color":"#307A81"},{"title":"Diversified Machinery","value":158.20000000000002,"color":"#455D5C"},{"title":"Drugs - Generic","value":21581.6,"color":"#BD6556"},{"title":"Research Services","value":689.85,"color":"#D6DFF7"},{"title":"Semiconductor - Specialized","value":174.52,"color":"#91D163"},{"title":"Housewares & Accessories","value":46.75,"color":"#E7107E"},{"title":"Drug Delivery","value":78.78,"color":"#444C0B"},{"title":"Trucks & Other Vehicles","value":156.56,"color":"#31D7AE"},{"title":"Healthcare Information Services","value":40.57,"color":"#948562"},{"title":"Property Management","value":406.92,"color":"#D86781"},{"title":"Pollution & Treatment Controls","value":503.7,"color":"#0A26B6"},{"title":"Electric Utilities","value":90.43,"color":"#D6EC90"},{"title":"Printed Circuit Boards","value":15564.04,"color":"#902040"},{"title":"Long-Term Care Facilities","value":58.93,"color":"#42F0A9"},{"title":"Farm Products","value":27509.52,"color":"#804C5A"},{"title":"Business Software & Services","value":36703.64,"color":"#2EB68D"},{"title":"Security & Protection Services","value":9274.58,"color":"#881A4B"},{"title":"Communication Equipment","value":1391.31,"color":"#BD401C"},{"title":"Home Health Care","value":271.67,"color":"#CF22DB"},{"title":"Closed-End Fund - Equity","value":1212.35,"color":"#14FC7F"}]);
+});
 
 /*!
  * jquery.drawPieChart.js
@@ -67,50 +97,51 @@
  * https://github.com/githiro/drawPieChart
  * Released under the MIT license.
  */
+;
 (function($, undefined) {
   $.fn.drawPieChart = function(data, options) {
     var $this = this,
       W = $this.width(),
       H = $this.height(),
-      centerX = W/2,
-      centerY = H/2,
+      centerX = W / 2,
+      centerY = H / 2,
       cos = Math.cos,
       sin = Math.sin,
       PI = Math.PI,
       settings = $.extend({
-        segmentShowStroke : true,
-        segmentStrokeColor : "#fff",
-        segmentStrokeWidth : 1,
+        segmentShowStroke: true,
+        segmentStrokeColor: "#fff",
+        segmentStrokeWidth: 1,
         baseColor: "#fff",
         baseOffset: 15,
-        edgeOffset: 30,//offset from edge of $this
+        edgeOffset: 30, //offset from edge of $this
         pieSegmentGroupClass: "pieSegmentGroup",
         pieSegmentClass: "pieSegment",
-        lightPiesOffset: 12,//lighten pie's width
-        lightPiesOpacity: .3,//lighten pie's default opacity
+        lightPiesOffset: 12, //lighten pie's width
+        lightPiesOpacity: .3, //lighten pie's default opacity
         lightPieClass: "lightPie",
-        animation : true,
-        animationSteps : 90,
-        animationEasing : "easeInOutExpo",
+        animation: true,
+        animationSteps: 90,
+        animationEasing: "easeInOutExpo",
         tipOffsetX: -15,
         tipOffsetY: -45,
         tipClass: "pieTip",
-        beforeDraw: function(){  },
-        afterDrawed : function(){  },
-        onPieMouseenter : function(e,data){  },
-        onPieMouseleave : function(e,data){  },
-        onPieClick : function(e,data){  }
+        beforeDraw: function() {},
+        afterDrawed: function() {},
+        onPieMouseenter: function(e, data) {},
+        onPieMouseleave: function(e, data) {},
+        onPieClick: function(e, data) {}
       }, options),
       animationOptions = {
-        linear : function (t){
+        linear: function(t) {
           return t;
         },
-        easeInOutExpo: function (t) {
-          var v = t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t;
-          return (v>1) ? 1 : v;
+        easeInOutExpo: function(t) {
+          var v = t < .5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
+          return (v > 1) ? 1 : v;
         }
       },
-      requestAnimFrame = function(){
+      requestAnimFrame = function() {
         return window.requestAnimationFrame ||
           window.webkitRequestAnimationFrame ||
           window.mozRequestAnimationFrame ||
@@ -123,33 +154,33 @@
 
     var $wrapper = $('<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg>').appendTo($this);
     var $groups = [],
-        $pies = [],
-        $lightPies = [],
-        easingFunction = animationOptions[settings.animationEasing],
-        pieRadius = Min([H/2,W/2]) - settings.edgeOffset,
-        segmentTotal = 0;
+      $pies = [],
+      $lightPies = [],
+      easingFunction = animationOptions[settings.animationEasing],
+      pieRadius = Min([H / 2, W / 2]) - settings.edgeOffset,
+      segmentTotal = 0;
 
     //Draw base circle
-    var drawBasePie = function(){
+    var drawBasePie = function() {
       var base = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       var $base = $(base).appendTo($wrapper);
       base.setAttribute("cx", centerX);
       base.setAttribute("cy", centerY);
-      base.setAttribute("r", pieRadius+settings.baseOffset);
+      base.setAttribute("r", pieRadius + settings.baseOffset);
       base.setAttribute("fill", settings.baseColor);
     }();
 
     //Set up pie segments wrapper
     var pathGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     var $pathGroup = $(pathGroup).appendTo($wrapper);
-    $pathGroup[0].setAttribute("opacity",0);
+    $pathGroup[0].setAttribute("opacity", 0);
 
     //Set up tooltip
     var $tip = $('<div class="' + settings.tipClass + '" />').appendTo('body').hide(),
       tipW = $tip.width(),
       tipH = $tip.height();
 
-    for (var i = 0, len = data.length; i < len; i++){
+    for (var i = 0, len = data.length; i < len; i++) {
       segmentTotal += data[i].value;
       var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       g.setAttribute("data-order", i);
@@ -183,133 +214,129 @@
     //Animation start
     triggerAnimation();
 
-    function pathMouseEnter(e){
+    function pathMouseEnter(e) {
       var index = $(this).data().order;
       $tip.text(data[index].title + ": " + data[index].value).fadeIn(200);
-      if ($groups[index][0].getAttribute("data-active") !== "active"){
-        $lightPies[index].animate({opacity: .8}, 180);
+      if ($groups[index][0].getAttribute("data-active") !== "active") {
+        $lightPies[index].animate({
+          opacity: .8
+        }, 180);
       }
-      settings.onPieMouseenter.apply($(this),[e,data]);
+      settings.onPieMouseenter.apply($(this), [e, data]);
     }
-    function pathMouseLeave(e){
+
+    function pathMouseLeave(e) {
       var index = $(this).data().order;
       $tip.hide();
-      if ($groups[index][0].getAttribute("data-active") !== "active"){
-        $lightPies[index].animate({opacity: settings.lightPiesOpacity}, 100);
+      if ($groups[index][0].getAttribute("data-active") !== "active") {
+        $lightPies[index].animate({
+          opacity: settings.lightPiesOpacity
+        }, 100);
       }
-      settings.onPieMouseleave.apply($(this),[e,data]);
+      settings.onPieMouseleave.apply($(this), [e, data]);
     }
-    function pathMouseMove(e){
+
+    function pathMouseMove(e) {
       $tip.css({
         top: e.pageY + settings.tipOffsetY,
         left: e.pageX - $tip.width() / 2 + settings.tipOffsetX
       });
     }
-    function pathClick(e){
+
+    function pathClick(e) {
       var index = $(this).data().order;
       var targetGroup = $groups[index][0];
-      for (var i = 0, len = data.length; i < len; i++){
+      for (var i = 0, len = data.length; i < len; i++) {
         if (i === index) continue;
-        $groups[i][0].setAttribute("data-active","");
-        $lightPies[i].css({opacity: settings.lightPiesOpacity});
+        $groups[i][0].setAttribute("data-active", "");
+        $lightPies[i].css({
+          opacity: settings.lightPiesOpacity
+        });
       }
-      if (targetGroup.getAttribute("data-active") === "active"){
-        targetGroup.setAttribute("data-active","");
-        $lightPies[index].css({opacity: .8});
+      if (targetGroup.getAttribute("data-active") === "active") {
+        targetGroup.setAttribute("data-active", "");
+        $lightPies[index].css({
+          opacity: .8
+        });
       } else {
-        targetGroup.setAttribute("data-active","active");
-        $lightPies[index].css({opacity: 1});
+        targetGroup.setAttribute("data-active", "active");
+        $lightPies[index].css({
+          opacity: 1
+        });
       }
-      settings.onPieClick.apply($(this),[e,data]);
+      settings.onPieClick.apply($(this), [e, data]);
     }
-    function drawPieSegments (animationDecimal){
-      var startRadius = -PI/2,//-90 degree
-          rotateAnimation = 1;
+
+    function drawPieSegments(animationDecimal) {
+      var startRadius = -PI / 2, //-90 degree
+        rotateAnimation = 1;
       if (settings.animation) {
-        rotateAnimation = animationDecimal;//count up between0~1
+        rotateAnimation = animationDecimal; //count up between0~1
       }
 
-      $pathGroup[0].setAttribute("opacity",animationDecimal);
+      $pathGroup[0].setAttribute("opacity", animationDecimal);
 
       //draw each path
-      for (var i = 0, len = data.length; i < len; i++){
-        var segmentAngle = rotateAnimation * ((data[i].value/segmentTotal) * (PI*2)),//start radian
-            endRadius = startRadius + segmentAngle,
-            largeArc = ((endRadius - startRadius) % (PI * 2)) > PI ? 1 : 0,
-            startX = centerX + cos(startRadius) * pieRadius,
-            startY = centerY + sin(startRadius) * pieRadius,
-            endX = centerX + cos(endRadius) * pieRadius,
-            endY = centerY + sin(endRadius) * pieRadius,
-            startX2 = centerX + cos(startRadius) * (pieRadius + settings.lightPiesOffset),
-            startY2 = centerY + sin(startRadius) * (pieRadius + settings.lightPiesOffset),
-            endX2 = centerX + cos(endRadius) * (pieRadius + settings.lightPiesOffset),
-            endY2 = centerY + sin(endRadius) * (pieRadius + settings.lightPiesOffset);
+      for (var i = 0, len = data.length; i < len; i++) {
+        var segmentAngle = rotateAnimation * ((data[i].value / segmentTotal) * (PI * 2)), //start radian
+          endRadius = startRadius + segmentAngle,
+          largeArc = ((endRadius - startRadius) % (PI * 2)) > PI ? 1 : 0,
+          startX = centerX + cos(startRadius) * pieRadius,
+          startY = centerY + sin(startRadius) * pieRadius,
+          endX = centerX + cos(endRadius) * pieRadius,
+          endY = centerY + sin(endRadius) * pieRadius,
+          startX2 = centerX + cos(startRadius) * (pieRadius + settings.lightPiesOffset),
+          startY2 = centerY + sin(startRadius) * (pieRadius + settings.lightPiesOffset),
+          endX2 = centerX + cos(endRadius) * (pieRadius + settings.lightPiesOffset),
+          endY2 = centerY + sin(endRadius) * (pieRadius + settings.lightPiesOffset);
         var cmd = [
-          'M', startX, startY,//Move pointer
-          'A', pieRadius, pieRadius, 0, largeArc, 1, endX, endY,//Draw outer arc path
-          'L', centerX, centerY,//Draw line to the center.
-          'Z'//Cloth path
+          'M', startX, startY, //Move pointer
+          'A', pieRadius, pieRadius, 0, largeArc, 1, endX, endY, //Draw outer arc path
+          'L', centerX, centerY, //Draw line to the center.
+          'Z' //Cloth path
         ];
         var cmd2 = [
           'M', startX2, startY2,
-          'A', pieRadius + settings.lightPiesOffset, pieRadius + settings.lightPiesOffset, 0, largeArc, 1, endX2, endY2,//Draw outer arc path
+          'A', pieRadius + settings.lightPiesOffset, pieRadius + settings.lightPiesOffset, 0, largeArc, 1, endX2, endY2, //Draw outer arc path
           'L', centerX, centerY,
           'Z'
         ];
-        $pies[i][0].setAttribute("d",cmd.join(' '));
+        $pies[i][0].setAttribute("d", cmd.join(' '));
         $lightPies[i][0].setAttribute("d", cmd2.join(' '));
         startRadius += segmentAngle;
       }
     }
 
-    var animFrameAmount = (settings.animation)? 1/settings.animationSteps : 1,//if settings.animationSteps is 10, animFrameAmount is 0.1
-        animCount =(settings.animation)? 0 : 1;
-    function triggerAnimation(){
+    var animFrameAmount = (settings.animation) ? 1 / settings.animationSteps : 1, //if settings.animationSteps is 10, animFrameAmount is 0.1
+      animCount = (settings.animation) ? 0 : 1;
+
+    function triggerAnimation() {
       if (settings.animation) {
         requestAnimFrame(animationLoop);
       } else {
         drawPieSegments(1);
       }
     }
-    function animationLoop(){
-      animCount += animFrameAmount;//animCount start from 0, after "settings.animationSteps"-times executed, animCount reaches 1.
+
+    function animationLoop() {
+      animCount += animFrameAmount; //animCount start from 0, after "settings.animationSteps"-times executed, animCount reaches 1.
       drawPieSegments(easingFunction(animCount));
-      if (animCount < 1){
+      if (animCount < 1) {
         requestAnimFrame(arguments.callee);
       } else {
         settings.afterDrawed.call($this);
       }
     }
-    function Max(arr){
+
+    function Max(arr) {
       return Math.max.apply(null, arr);
     }
-    function Min(arr){
+
+    function Min(arr) {
       return Math.min.apply(null, arr);
     }
     return $this;
   };
 })(jQuery);
 </script>
-
-<script src="js/angular.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.0.8/d3.min.js"></script>
-<script src="js/angular-d3.js"></script>
-<!-- Angular ng-resource -->
-<script src="js/angular-resource.min.js"></script>
-<!-- <script src="js/angular-chart.min.js"></script> -->
-<!-- Angular animation -->
-<script src="js/angular-animate.min.js"></script>
-<script src="js/angular-aria.min.js"></script>
-<script src="js/angular-messages.min.js"></script>
-<!-- Angular Material Library -->
-<script src="js/angular-material.min.js"></script>
-<!-- Jquery Lib -->
-<!-- <script src="js/Chart.min.js"></script> -->
-<!-- Bootstrap.js -->
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
-<!-- This one is for router -->
-<script src="js/angular-route.min.js"></script>
-<!-- App.js for this app -->
-<script type="text/javascript" src="app.js"></script>
-
 </html>
