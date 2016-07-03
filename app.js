@@ -60,16 +60,20 @@
 
             });
             console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
-
+            var r = {};
+            var result = []
             for (var sec in secAvg) {
                 console.log("Sector = > " + sec);
                 console.log("For Loop => " + JSON.stringify(secAvg[sec]));
-                secAvg[sec]["avg"] = secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
+                r["avg"] = secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
+                r["sec"] = sec;
+                result.push(r);
+
                 // secAvg[sec]
                 // var value = myDictionary[key];
                 // Use `key` and `value`
             }
-            console.log("This is what have you doooonnnneneeeeee ===>" + JSON.stringify(secAvg));
+            console.log("result ===>" + JSON.stringify(result));
 
         }
 
