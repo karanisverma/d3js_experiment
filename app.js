@@ -63,18 +63,20 @@
             var r = {};
             var result = []
             for (var sec in secAvg) {
+                r = {};
                 console.log("Sector = > " + sec);
                 console.log("For Loop => " + JSON.stringify(secAvg[sec]));
-                // r["avg"] = secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
-                // r["sec"] = sec;
-                r[sec]= secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
-                // result.push(r);
+                r["avg"] = secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
+                r["sec"] = sec;
+                // r[sec]= secAvg[sec]["Total Profit Margin"] / secAvg[sec]["count"];
+                result.push(r);
 
                 // secAvg[sec]
                 // var value = myDictionary[key];
                 // Use `key` and `value`
             }
-            console.log("result ===>" + JSON.stringify(r));
+            console.log("result ===>" + JSON.stringify(result));
+            return result;
 
         }
 
@@ -116,6 +118,11 @@
     }]);
     app.controller('graphController', ['$resource', 'graphService', function($resource, graphService) {
         var gc = this;
+            gc.width = 600;
+    gc.height = 350;
+    gc.yAxis = 'Avg Profit Margin';
+    gc.xAxis = 'Secor';
+    
         // this.getResource = function(url) {
         //         return $resource(url);
         //     }
@@ -124,7 +131,21 @@
         // and fire it after definition
         gc.data = graphService.returnJSON();
         this.barGraph = function() {
-            graphService.getAvg();
+            gc.avgProfit = graphService.getAvg();
+
+            gc.max = 0;
+            console.log("!!!! => "+gc.avgProfit);
+            for (var i =0 ; i< gc.avgProfit.length;i++){
+                if(gc.avgProfit[i].avg > gc.max){
+                    gc.max = gc.avgProfit[i].avg;
+                }
+            }
+    // for (var key in gc.avgProfit) {
+    //     // Find Maximum X Axis Value
+    //     if (gc.avgProfit[key] > gc.max)
+    //     gc.max = gc.avgProfit[key];
+    console.log("GC Max =>"+gc.max)
+    // }
         }
 
         this.pieChart = function() {

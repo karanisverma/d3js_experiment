@@ -1,44 +1,51 @@
-html,body{
-	background: #f64d3d;
-	/*overflow: hidden;*/
+body {
+  text-align: center;
 }
-body{
-	zoom:75%;
+.chart {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 60px auto;
+  position: relative;
+  list-style: none;
+  padding: 0;
 }
-.container{
-	width: 100%;
-	color: black;
-
+.y {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  bottom: 0;
+  padding: 5px;
 }
-.marvel-device .screen{
-	background:white;
-	overflow-y: auto;
-	/*overflow-x: hidden;*/
+.x {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 5px;
 }
-.mobile{
-	    margin: 0 auto;
-    width: 25em;
-    margin-top: 3em;
+.bar {
+  background: blue;
+  position: absolute;
+  bottom: 0;
 }
-::-webkit-scrollbar {
-   width: 6px;
+.bar:nth-of-type(even) {
+  background: red;
 }
-
-::-webkit-scrollbar-track {
-   /*-webkit-box-shadow: inset 0 0 6px white;*/
+.bar span {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  -webkit-transform: rotate(-90deg) translateY(-50%);
+          transform: rotate(-90deg) translateY(-50%);
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  font-weight: bold;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  white-space: nowrap;
 }
-
-::-webkit-scrollbar-thumb {
-   /*-webkit-box-shadow: inset 0 0 6px black;*/
-   background: #d0d0d0 ;
-}
-
-md-pagination-wrapper{
-	margin: 0 auto;
-    position: relative;
-}
-
-md-input-container.md-block {
-    display: block;
-    text-align: left;
+.bar:hover span {
+  opacity: 1;
 }

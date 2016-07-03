@@ -31,7 +31,18 @@
     <md-button class="md-raised" ng-click="gc.search()">Search</md-button>
     <md-button class="md-raised" ng-click="gc.barGraph()">getaverage</md-button>
     <md-button class="md-raised" ng-click="gc.pieChart()">piechart</md-button>
-    
+        <ul class="chart" style="width:{{gc.width}}px; height:{{gc.height}}px;">
+      <!-- Labels -->
+      <div class="y" style="width:{{gc.height}}px;">{{gc.yAxis}}</div>
+      <div class="x">{{gc.xAxis}}</div>
+      <!-- Data -->
+      <!-- ng-if -->
+       <li ng-repeat="bar in gc.avgProfit" class="bar" style="height:{{bar.avg / gc.max * gc.height}}px; width:{{gc.width / gc.avgProfit.length - 5}}px; left:{{$index / gc.avgProfit.length * gc.width}}px;"><span>{{bar.sec}}:{{bar.avg}}</span></li>
+
+       <li ng-repeat="bar in gc.avgProfit" class="bar" style="position: absolute;
+    top: 23.3em;height:{{-(bar.avg / gc.max * gc.height)}}px; width:{{gc.width / gc.avgProfit.length - 5}}px; left:{{$index / gc.avgProfit.length * gc.width}}px;"><span>{{bar.sec}}:{{bar.avg}}</span></li>
+    </u
+    </ul>
     </div>
 <!--     <div ng-controller="BarCtrl as bc">
     <canvas id="bar" class="chart chart-bar"
