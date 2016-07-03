@@ -10,6 +10,28 @@
 
 (function() {
     var app = angular.module('graph-app', ['ngMaterial', 'ngResource', 'd3']);
+    app.directive("myDirective", function() {
+
+    return {
+        restrict: "E",
+        scope: {
+            drawPie: "&"                              
+        },
+        template: "<div ng-click='drawPie({{gc.pieChartval}})'></div>", // call function this way...
+        link: function(scope, element, attrs) {
+            // unwrap the function
+            scope.drawPie = scope.drawPie(); 
+
+            scope.data = "data from somewhere";
+
+            element.bind("click",function() {
+                scope.$apply(function() {
+                    drawPie(data);                        // ...or this way
+                });
+            });
+        }
+    }
+});
     app.service('graphService', ['$resource', function($resource) {
         this.getResource = function(url) {
             return $resource(url);
