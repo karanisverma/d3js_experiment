@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="music-app">
+<html ng-app="graph-app">
 
 <head>
     <title>Music APP</title>
@@ -9,7 +9,8 @@
     <!-- Angular material css -->
     <link rel="stylesheet" href="css/angular-material.min.css">
     <!-- Device mokeup CSS -->
-    <link rel="stylesheet" type="text/css" href="css/angular-chart.min.css">
+
+
     <!-- Custom css -->
     <link href="css/custom.css" rel="stylesheet">
 </head>
@@ -30,12 +31,22 @@
     <md-button class="md-raised" ng-click="gc.search()">Search</md-button>
     <md-button class="md-raised" ng-click="gc.getAvg()">getaverage</md-button>
     <md-button class="md-raised" ng-click="gc.getMark()">piechart</md-button>
+    
+    </div>
+    <div ng-controller="BarCtrl as bc">
+    <canvas id="bar" class="chart chart-bar"
+  chart-data="bc.data" chart-labels="bc.labels" chart-series="bc.series">
+</canvas>
     </div>
 </body>
 <!-- Angular.js -->
+
 <script src="js/angular.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/d3/3.0.8/d3.min.js"></script>
+<script src="js/angular-d3.js"></script>
 <!-- Angular ng-resource -->
 <script src="js/angular-resource.min.js"></script>
+<!-- <script src="js/angular-chart.min.js"></script> -->
 <!-- Angular animation -->
 <script src="js/angular-animate.min.js"></script>
 <script src="js/angular-aria.min.js"></script>
@@ -43,10 +54,11 @@
 <!-- Angular Material Library -->
 <script src="js/angular-material.min.js"></script>
 <!-- Jquery Lib -->
+
 <script src="js/jquery2.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="js/jquery.min.js"></script>
 
-<script src="js/angular-chart.min.js"></script>
+
 <!-- <script src="js/Chart.min.js"></script> -->
 <!-- Bootstrap.js -->
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
